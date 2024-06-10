@@ -24,7 +24,7 @@ const Hero = () => {
           justifyContent: 'center'
         }}
       >
-        <Box sx={{width:'40%', padding:20}}>
+        <Box sx={{width:{xs:"100%", sm:'50%', md:'40%'}, padding:{xs:3 ,sm:2,md:20}}}>
           <Box sx={{ background: "white", opacity: "0.8" }}>
             <Typography variant={"h6"} color="tomato" align="center" pt={8}>
               Trending styles
