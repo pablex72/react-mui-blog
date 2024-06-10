@@ -1,19 +1,9 @@
-import { Button, Typography } from "@mui/material";
-import FacebookIcon from "@mui/icons-material/Facebook";
+
+import Navbar from "./components/navbar/Navbar";
 function App() {
   return (
     <div className="App">
-      <Typography
-        align="center"
-        variant="h1"
-        color={"tomato"}
-        sx={{ background: "red"}}
-      >
-        HELLLO
-      </Typography>
-      <Button startIcon={<FacebookIcon />} variant="outlined" color="secondary">
-        Text{" "}
-      </Button>
+      <Navbar />
     </div>
   );
 }
