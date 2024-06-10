@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Box,
   InputBase,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
   styled,
 } from "@mui/material";
 
-import { Facebook, Instagram, Twitter } from "@mui/icons-material/";
+import {
+  Facebook,
+  Instagram,
+  Menu as MenuIcon,
+  Twitter,
+} from "@mui/icons-material/";
 const Navbar = () => {
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
@@ -33,6 +40,7 @@ const Navbar = () => {
     { Name: "Blog", Link: "#" },
     { Name: "Contact Us", Link: "#" },
   ];
+  const [open, setOpen] = useState(false);
   return (
     <AppBar sx={{ background: "black" }}>
       <StyledToolbar>
@@ -41,7 +49,7 @@ const Navbar = () => {
           <Instagram />
           <Twitter />
         </SocialBox>
-        <MenuBox>
+        <MenuBox sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
           {MenuItems.map((item) => (
             <Typography
               key={item.Name}
@@ -53,8 +61,40 @@ const Navbar = () => {
         </MenuBox>
         <SearchBox>
           <InputBase placeholder="Search..." sx={{ color: "white" }} />
+          <MenuIcon
+            sx={{
+              color: "white",
+              display: { xs: "block", sm: "block", md: "none" },
+            }}
+            onClick={() => setOpen(!open)}
+          />
         </SearchBox>
       </StyledToolbar>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        open={open}
+        onClose={() => setOpen(!open)}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+      >
+        <Box sx={{ width: 350, height: "90vh" }}>
+          {MenuItems.map((item) => (
+            <MenuItem
+              key={item.Name}
+              sx={{ cursor: "pointer", fontSize: "14px" }}
+            >
+              {item.Name}
+            </MenuItem>
+          ))}
+        </Box>
+      </Menu>
     </AppBar>
   );
 };
